@@ -1,24 +1,28 @@
 document.getElementById('currentDay').innerHTML = new Date().toUTCString();
 const currentTime = new Date().getHours();
 const mainScreen = document.getElementById('currentDay');
-const timeBlock = [];
+const hoursBack = 6;
+
 
 function init() {
-    const timeCount = [];
-    const timeNode = [];
-    const timeForm = [];
-    const timeBlockText = [];
     for (let i = 0; i < 48; i++) {
-        timeBlock[i] = document.createElement("div")
-        timeCount[i] = currentTime + (i);
-        timeBlockText[i] = document.createElement("p")
-        timeBlock[i].classList.add('time-block');
-        const pma = pmAdjust(timeCount[i])
-        var blocktime = subNum(pma, timeCount[i])
-        timeNode[i] = document.createTextNode(`${blocktime}`);
-        timeBlockText[i].appendChild(timeNode[i]);
-        timeBlock[i].appendChild(timeBlockText[i]);
-        mainScreen.appendChild(timeBlock[i]);
+        const valueOf = (i - hoursBack);
+        const itterationTime = (currentTime + (i)-hoursBack);
+        const timeBlock = document.createElement("div");
+        if (valueOf<0-valueOf) {
+            timeBlock.classList.add('time-block-r');
+        } else if (valueOf==0){
+            timeBlock.classList.add('time-block-c');
+        } else if (valueOf>0){
+            timeBlock.classList.add('time-block-g');
+        }
+        const itterationText = document.createElement("p")
+        const currentNode = document.createTextNode(`${subNum(pmAdjust(itterationTime), itterationTime)}`);
+        const form = document.createElement("p")
+        form.classList.add(Math.random());
+        itterationText.appendChild(currentNode);
+        timeBlock.appendChild(itterationText);
+        mainScreen.appendChild(timeBlock);
     }
 }
 init()
