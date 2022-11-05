@@ -4,7 +4,7 @@ const mainScreen = document.getElementById('currentDay');
 const hoursBack = 6;
 
 
-function init() {
+async function init() {
     for (let i = 0; i < 48; i++) {
         const valueOf = (i - hoursBack);
         const itterationTime = (currentTime + (i) - hoursBack);
@@ -16,24 +16,30 @@ function init() {
         } else if (valueOf > 0) {
             timeBlock.classList.add(`card`, `bg-success`);
         }
-        const itterationText = document.createElement("p")
-        const itterationButt = document.createElement("button")
+        const itterationText = document.createElement("label")
         const currentNode = document.createTextNode(`${subNum(pmAdjust(itterationTime), itterationTime)}`);
-        const currentButt = document.createTextNode(`Schedule for this spot!`);
-        itterationButt.addEventListener("click", function () {
-            console.log(1)
-        });
-        itterationText.appendChild(currentNode);
-        itterationButt.appendChild(currentButt);
+        const input = document.createElement("input")
+        const form = document.createElement("form")
+        const inputNode = document.createTextNode(`Schedule for this spot!`);
         timeBlock.appendChild(itterationText);
-        timeBlock.appendChild(itterationButt);
         mainScreen.appendChild(timeBlock);
+        input.appendChild(inputNode)
+        form.appendChild(input);
+        timeBlock.appendChild(form);
+        itterationText.appendChild(currentNode);
+        if (valueOf < 0 - valueOf) {
+            form.classList.add(`bg-danger`);
+        } else if (valueOf == 0) {
+            form.classList.add(`bg-secondary`);
+        } else if (valueOf > 0) {
+            form.classList.add(`bg-success`);
+        }
     }
 }
 init()
 
 function subNum(pmStatus, time) {
-    const weekdays = ["Tuesday", "Wednesday", "Thursday","Friday", "Saturday", "Sunday", "Monday"];
+    const weekdays = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday"];
     if (pmStatus == 1) {
         return (`${time} AM`);
     } else if (pmStatus == 2) {
