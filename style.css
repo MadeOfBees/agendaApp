@@ -25,22 +25,8 @@ textarea {
   white-space: pre-wrap;
 }
 
-.time-block-r {
-  background-color: rgb(230, 61, 61);
-  text-align: center;
-  border-radius: 15px;
-  height: 90px;
-}
-
-.time-block-c {
+.time-block {
   background-color: cadetblue;
-  text-align: center;
-  border-radius: 15px;
-  height: 90px;
-}
-
-.time-block-g {
-  background-color: rgb(110, 160, 95);
   text-align: center;
   border-radius: 15px;
   height: 90px;
