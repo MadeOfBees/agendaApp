@@ -10,18 +10,23 @@ function init() {
         const itterationTime = (currentTime + (i)-hoursBack);
         const timeBlock = document.createElement("div");
         if (valueOf<0-valueOf) {
-            timeBlock.classList.add('time-block-r');
+            timeBlock.classList.add(`card`, `bg-danger`);
         } else if (valueOf==0){
-            timeBlock.classList.add('time-block-c');
+            timeBlock.classList.add(`card`, `bg-secondary`);
         } else if (valueOf>0){
-            timeBlock.classList.add('time-block-g');
+            timeBlock.classList.add(`card`, `bg-success`);
         }
         const itterationText = document.createElement("p")
+        const itterationButt = document.createElement("button")
         const currentNode = document.createTextNode(`${subNum(pmAdjust(itterationTime), itterationTime)}`);
-        const form = document.createElement("p")
-        form.classList.add(Math.random());
+        const currentButt = document.createTextNode(`Schedule for this spot!`);
+        itterationButt.addEventListener("click", function () {
+            console.log(1)
+        });
         itterationText.appendChild(currentNode);
+        itterationButt.appendChild(currentButt);
         timeBlock.appendChild(itterationText);
+        timeBlock.appendChild(itterationButt);
         mainScreen.appendChild(timeBlock);
     }
 }
